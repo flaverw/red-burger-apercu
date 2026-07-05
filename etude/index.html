@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Étude d'économies · sous 48h — Everywhere</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,800;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --creme:#f5f1e8; --papier:#fbf9f3; --encre:#1b2a25; --sapin:#22453a; --sapin-c:#356453;
+  --or:#b08d4f; --or-c:#c9a565; --gris:#6f7a74; --ligne:#e2ddd0;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--creme);color:var(--encre);font-size:16px;line-height:1.6}
+h1,h2,h3,.serif{font-family:'Fraunces',Georgia,serif}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+.btn{font-family:'Inter',sans-serif;font-weight:700;font-size:15px;letter-spacing:.02em;border:0;cursor:pointer;border-radius:999px;padding:15px 28px;transition:.18s}
+.btn-or{background:var(--sapin);color:#fff}
+.btn-or:hover{background:var(--sapin-c)}
+
+.demo{position:fixed;top:0;left:0;right:0;z-index:60;background:var(--encre);color:#fff;text-align:center;font-size:11.5px;letter-spacing:.6px;text-transform:uppercase;padding:5px 10px}
+.demo b{color:var(--or-c)}
+
+header{background:var(--sapin);color:#fff;padding:74px 20px 42px;text-align:center}
+header .ev{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--or-c);font-weight:600;margin-bottom:16px}
+header .tag48{display:inline-block;background:var(--or);color:#26200f;font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:6px 15px;border-radius:999px;margin-bottom:16px}
+header h1{font-size:clamp(28px,5vw,44px);font-weight:800;line-height:1.08;max-width:18ch;margin:0 auto}
+header h1 em{font-style:italic;font-weight:500;color:var(--or-c)}
+header p{margin:16px auto 0;max-width:54ch;color:#d8e3dd;font-size:16.5px}
+header .pour{margin-top:14px;font-size:13.5px;color:#a9bcb2;letter-spacing:.04em}
+header .pour b{color:#fff}
+
+.etapes{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:var(--papier);border-bottom:1px solid var(--ligne)}
+.etapes .e{padding:20px 18px;text-align:center;border-right:1px solid var(--ligne)}
+.etapes .e:last-child{border-right:0}
+.etapes .n{font-family:'Fraunces',serif;font-weight:800;color:var(--or);font-size:22px}
+.etapes .t{font-size:13.5px;color:var(--gris);margin-top:4px}
+.etapes .t b{color:var(--encre)}
+@media(max-width:620px){.etapes{grid-template-columns:1fr}.etapes .e{border-right:0;border-bottom:1px solid var(--ligne)}}
+
+main{padding:40px 0 70px}
+.bloc{background:var(--papier);border:1px solid var(--ligne);border-radius:16px;padding:26px;margin-bottom:20px}
+.bloc h2{font-size:21px;font-weight:600;margin-bottom:4px}
+.bloc .sous{color:var(--gris);font-size:14.5px;margin-bottom:18px}
+.champ{margin-bottom:14px}
+.champ label{display:block;font-size:12.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--sapin);margin-bottom:6px}
+.champ input,.champ textarea,.champ select{width:100%;border:1.5px solid var(--ligne);border-radius:10px;padding:12px 14px;font-family:'Inter',sans-serif;font-size:15px;background:#fff;color:var(--encre)}
+.champ input:focus,.champ textarea:focus,.champ select:focus{outline:none;border-color:var(--or)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.duo{grid-template-columns:1fr}}
+
+/* postes de dépense */
+.poste{border:1.5px solid var(--ligne);border-radius:12px;padding:14px 16px;margin-bottom:10px;transition:.15s;background:#fff}
+.poste.on{border-color:var(--or);box-shadow:0 6px 18px rgba(176,141,79,.12)}
+.poste-tete{display:flex;align-items:center;gap:12px;cursor:pointer}
+.poste-tete .ic{font-size:20px;width:26px;text-align:center}
+.poste-tete .nom{font-weight:600;font-size:15.5px;flex:1}
+.poste-tete .rem{font-size:12px;color:var(--gris)}
+.poste-tete .chk{width:22px;height:22px;border:2px solid var(--ligne);border-radius:6px;display:grid;place-items:center;flex-shrink:0;color:#fff;font-size:13px}
+.poste.on .poste-tete .chk{background:var(--sapin);border-color:var(--sapin)}
+.poste-corps{display:none;margin-top:14px;padding-top:14px;border-top:1px dashed var(--ligne)}
+.poste.on .poste-corps{display:block}
+.poste-corps .trio{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:10px}
+@media(max-width:560px){.poste-corps .trio{grid-template-columns:1fr}}
+.poste-corps input,.poste-corps select{width:100%;border:1.5px solid var(--ligne);border-radius:9px;padding:10px 12px;font-family:'Inter';font-size:14px;background:#fbfaf6}
+.poste-corps .mini{font-size:11px;color:var(--gris);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;display:block}
+
+/* pièces jointes */
+.pj{border:2px dashed var(--ligne);border-radius:12px;padding:22px;text-align:center;background:#fff;cursor:pointer;transition:.15s;display:block}
+.pj:hover,.pj:focus-within{border-color:var(--or);background:#fffdf8}
+.pj:focus-within{box-shadow:0 0 0 3px rgba(176,141,79,.28)}
+.pj .big{font-size:30px}
+.pj .t{font-weight:600;margin-top:6px}
+.pj .s{font-size:13px;color:var(--gris);margin-top:2px}
+/* input fichier masqué mais focusable au clavier (pas display:none) */
+.pj input{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);border:0}
+.poste-tete:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:8px}
+.pj-liste{margin-top:12px;display:flex;flex-direction:column;gap:6px}
+.pj-item{display:flex;align-items:center;gap:8px;background:var(--creme);border-radius:8px;padding:8px 12px;font-size:13.5px}
+.pj-item .x{margin-left:auto;color:#a33;cursor:pointer;font-weight:700}
+.pj-confid{font-size:12.5px;color:var(--gris);margin-top:12px;display:flex;gap:8px;align-items:flex-start}
+.pj-confid .l{color:var(--sapin)}
+
+/* consentement */
+.consent{display:flex;gap:12px;align-items:flex-start;background:var(--creme);border-radius:10px;padding:14px 16px;font-size:13.5px;color:#3d453f}
+.consent input{margin-top:3px;width:18px;height:18px;flex-shrink:0;accent-color:var(--sapin)}
+.consent a{color:var(--sapin)}
+
+.envoi{text-align:center;margin-top:22px}
+.envoi .btn{width:100%;max-width:420px;justify-content:center}
+.fineprint{font-size:12px;color:var(--gris);text-align:center;margin-top:14px;max-width:60ch;margin-left:auto;margin-right:auto}
+.fineprint b{color:var(--encre)}
+
+footer{background:var(--encre);color:#9fb0a8;text-align:center;padding:30px 20px;font-size:13px}
+footer b{color:var(--or-c)}
+
+.modal{position:fixed;inset:0;background:rgba(20,30,26,.6);display:none;align-items:center;justify-content:center;z-index:100;padding:20px}
+.modal.show{display:flex}
+.modal .box{background:var(--papier);border-radius:16px;max-width:460px;padding:30px;text-align:center}
+.modal h3{font-size:24px;margin-bottom:8px}
+.modal p{color:#4a534d;font-size:15px}
+.modal .recap{background:#fff;border:1px solid var(--ligne);border-radius:10px;padding:12px 14px;margin:14px 0;text-align:left;font-size:13.5px;max-height:180px;overflow:auto}
+.modal .dtag{background:var(--creme);border-radius:8px;padding:10px;font-size:12.5px;color:var(--sapin);margin-bottom:14px}
+</style>
+</head>
+<body>
+<div class="demo"><b>Démonstration Everywhere</b> · formulaire inerte — aucun fichier n'est réellement envoyé</div>
+
+<header>
+  <div class="ev">Everywhere · Cabinet d'accompagnement numérique</div>
+  <div class="tag48">Votre étude sous 48 h</div>
+  <h1>Ce que vous payez chaque mois, <em>passé au crible.</em></h1>
+  <p>Confiez-nous vos contrats et abonnements. On regarde, poste par poste, ce qu'on peut
+  <b>remplacer, améliorer ou renégocier</b> — et on vous remet une étude claire sous 48 h.</p>
+  <div class="pour">Étude préparée pour <b id="etab">votre établissement</b> · gratuite, sans engagement</div>
+</header>
+
+<div class="etapes">
+  <div class="e"><div class="n">1</div><div class="t"><b>Vous remplissez</b><br>5 minutes, ce que vous savez</div></div>
+  <div class="e"><div class="n">2</div><div class="t"><b>On analyse</b><br>vos postes, un par un</div></div>
+  <div class="e"><div class="n">3</div><div class="t"><b>Vous recevez</b><br>votre étude sous 48 h</div></div>
+</div>
+
+<main>
+  <div class="wrap">
+    <form id="form" onsubmit="return envoyer(event)">
+
+      <!-- 1 · coordonnées -->
+      <div class="bloc">
+        <h2 class="serif">1 · Vous</h2>
+        <div class="sous">Pour vous recontacter et vous adresser l'étude.</div>
+        <div class="duo">
+          <div class="champ"><label>Établissement</label><input id="f-etab" type="text" placeholder="Nom de votre commerce"></div>
+          <div class="champ"><label>Votre nom</label><input id="f-nom" type="text" placeholder="Prénom et nom"></div>
+        </div>
+        <div class="duo">
+          <div class="champ"><label>Téléphone</label><input id="f-tel" type="tel" placeholder="06 …"></div>
+          <div class="champ"><label>Email</label><input id="f-mail" type="email" placeholder="vous@email.fr"></div>
+        </div>
+      </div>
+
+      <!-- 2 · postes -->
+      <div class="bloc">
+        <h2 class="serif">2 · Vos postes de dépense</h2>
+        <div class="sous">Cochez ce que vous voulez qu'on regarde. Remplissez ce que vous savez — le reste, on le retrouve ensemble. Rien n'est obligatoire.</div>
+        <div id="postes"></div>
+      </div>
+
+      <!-- 3 · pièces jointes -->
+      <div class="bloc">
+        <h2 class="serif">3 · Vos contrats <span style="font-weight:500;color:var(--gris);font-size:15px">— facultatif</span></h2>
+        <div class="sous">Une facture ou un contrat en photo/PDF suffit pour une étude précise. Facultatif : sans, on travaille avec ce que vous nous dites.</div>
+        <label class="pj" for="f-files">
+          <div class="big">📎</div>
+          <div class="t">Joindre mes contrats / factures</div>
+          <div class="s">PDF, photo ou capture — plusieurs fichiers possibles</div>
+          <input id="f-files" type="file" multiple accept=".pdf,.jpg,.jpeg,.png,.webp,.heic,.doc,.docx">
+        </label>
+        <div class="pj-liste" id="pj-liste"></div>
+        <div class="pj-confid"><span class="l">🔒</span><span>Vos documents restent <b>strictement confidentiels</b>, ne sont jamais revendus ni partagés, et sont <b>supprimés à votre demande</b>. Ils servent uniquement à préparer votre étude.</span></div>
+      </div>
+
+      <!-- 4 · message -->
+      <div class="bloc">
+        <h2 class="serif">4 · Un mot pour nous</h2>
+        <div class="sous">Un contrat qui vous pèse ? Une échéance qui approche ? Dites-le.</div>
+        <div class="champ"><textarea id="f-msg" rows="3" placeholder="Ex : mon abonnement site se renouvelle en septembre, et la commission de livraison me semble élevée…"></textarea></div>
+      </div>
+
+      <!-- consentement + envoi -->
+      <div class="bloc">
+        <label class="consent">
+          <input type="checkbox" id="f-consent">
+          <span>J'autorise Everywhere à étudier les informations et documents transmis pour préparer mon étude d'économies, et à me recontacter à ce sujet. Mes documents restent confidentiels et je peux demander leur suppression à tout moment.</span>
+        </label>
+        <div class="envoi">
+          <button type="submit" class="btn btn-or">Recevoir mon étude sous 48 h →</button>
+          <p class="fineprint"><b>Estimation prudente, pas une promesse.</b> Nous comparons ce que vous payez à ce qui existe ; le montant réel des économies peut varier, et vous restez seul décideur. Nous ne donnons aucun conseil juridique ou fiscal. Gratuit, sans engagement.</p>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</main>
+
+<footer>
+  <div><b>Everywhere</b> · Cabinet d'accompagnement numérique — on constate, on compare, vous décidez.</div>
+  <div style="margin-top:8px;color:#7d8f86">Démonstration — formulaire inerte, aucune donnée transmise. En production : réception sécurisée, chiffrée, hébergée en Europe.</div>
+</footer>
+
+<div class="modal" id="modal"><div class="box">
+  <h3 class="serif">Bien reçu — merci.</h3>
+  <div class="dtag">🛈 Démonstration : rien n'a réellement été envoyé. En vrai, vous recevriez un accusé de réception, puis votre étude sous 48 h.</div>
+  <div class="recap" id="recap"></div>
+  <p style="font-size:13px;color:var(--gris);margin-bottom:14px">On analyse, on chiffre prudemment, on vous rappelle. Vous décidez de la suite — ou pas.</p>
+  <button class="btn btn-or" onclick="document.getElementById('modal').classList.remove('show')">Fermer</button>
+</div></div>
+
+<script>
+var POSTES=[
+  {ic:'🌐',nom:'Site web & hébergement',rem:'Wix, DISH, agence, abonnement…'},
+  {ic:'📅',nom:'Réservation en ligne',rem:'Planity, TheFork, Zenchef…'},
+  {ic:'🛵',nom:'Commande & livraison',rem:'Deliveroo, Uber Eats, Just Eat — commission'},
+  {ic:'💳',nom:'Terminal de paiement & banque',rem:'SumUp, Stripe, votre banque — commissions'},
+  {ic:'🧾',nom:'Caisse & logiciel',rem:'Zelty, Tiller, Lightspeed…'},
+  {ic:'📞',nom:'Téléphonie & internet pro',rem:'Orange, SFR, Bouygues…'},
+  {ic:'⚡',nom:'Énergie (élec / gaz)',rem:'contrat pro'},
+  {ic:'🛡️',nom:'Assurance professionnelle',rem:'RC pro, multirisque…'},
+  {ic:'📣',nom:'Publicité & marketing',rem:'Google Ads, réseaux, imprimeur…'},
+  {ic:'➕',nom:'Autre poste',rem:'dites-nous lequel'}
+];
+var host=document.getElementById('postes');
+POSTES.forEach(function(p,i){
+  var d=document.createElement('div'); d.className='poste'; d.dataset.i=i;
+  d.innerHTML=
+   '<div class="poste-tete" role="button" tabindex="0" aria-expanded="false" aria-label="Étudier ce poste : '+p.nom+'"><span class="ic" aria-hidden="true">'+p.ic+'</span>'+
+   '<span class="nom">'+p.nom+'<div class="rem">'+p.rem+'</div></span>'+
+   '<span class="chk" aria-hidden="true">✓</span></div>'+
+   '<div class="poste-corps"><div class="trio">'+
+     '<div><span class="mini">Prestataire actuel</span><input data-k="presta" type="text" placeholder="Ex : '+p.rem.split(',')[0].replace('…','').trim()+'"></div>'+
+     '<div><span class="mini">Coût</span><input data-k="cout" type="text" placeholder="€/mois, €/an ou %"></div>'+
+     '<div><span class="mini">Échéance / engagement</span><input data-k="ech" type="text" placeholder="Ex : sept. 2026 / inconnu"></div>'+
+   '</div></div>';
+  var tete=d.querySelector('.poste-tete');
+  function bascule(){ var on=d.classList.toggle('on'); tete.setAttribute('aria-expanded', on?'true':'false'); }
+  tete.onclick=bascule;
+  tete.onkeydown=function(e){ if(e.key===' '||e.key==='Enter'){ e.preventDefault(); bascule(); } };
+  host.appendChild(d);
+});
+
+var files=[];
+var input=document.getElementById('f-files');
+input.onchange=function(){
+  for(var i=0;i<input.files.length;i++) files.push(input.files[i]);
+  renderFiles(); input.value='';
+};
+function renderFiles(){
+  var L=document.getElementById('pj-liste');
+  L.innerHTML=files.map(function(f,i){
+    var ko=f.size/1024, t = ko<1 ? '<​1 Ko' : (ko<1024 ? Math.round(ko)+' Ko' : (ko/1024).toFixed(1)+' Mo');
+    return '<div class="pj-item">📄 '+f.name.replace(/[<>]/g,'')+' · '+t+'<span class="x" role="button" tabindex="0" aria-label="Retirer '+f.name.replace(/["<>]/g,'')+'" onclick="rmFile('+i+')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();rmFile('+i+')}">✕</span></div>';
+  }).join('');
+}
+window.rmFile=function(i){ files.splice(i,1); renderFiles(); };
+
+function envoyer(e){
+  e.preventDefault();
+  if(!document.getElementById('f-consent').checked){ alert("Merci de cocher l'autorisation pour qu'on puisse préparer votre étude."); return false; }
+  var tel=document.getElementById('f-tel').value.trim(), mail=document.getElementById('f-mail').value.trim();
+  if(!tel && !mail){ alert('Laissez-nous au moins un téléphone ou un email pour vous adresser l\'étude.'); return false; }
+  var choisis=[].slice.call(document.querySelectorAll('.poste.on')).map(function(d){
+    var n=d.querySelector('.nom').childNodes[0].textContent.trim();
+    var pr=d.querySelector('[data-k="presta"]').value.trim();
+    return '• '+n+(pr?' — '+pr:'');
+  });
+  var r=document.getElementById('recap');
+  r.innerHTML='<b>Postes à étudier ('+choisis.length+')</b><br>'+(choisis.length?choisis.join('<br>'):'—')+
+    '<br><br><b>Pièces jointes</b> : '+(files.length?files.length+' fichier(s)':'aucune (facultatif)');
+  var modal=document.getElementById('modal');
+  modal.classList.add('show');
+  var fermer=modal.querySelector('button'); if(fermer) fermer.focus();
+  return false;
+}
+// fermeture de la modale à la touche Échap
+document.addEventListener('keydown',function(e){ if(e.key==='Escape') document.getElementById('modal').classList.remove('show'); });
+
+// pré-remplissage établissement via ?e=
+(function(){
+  var m=location.search.match(/[?&]e=([^&]+)/);
+  if(m){ var nom=decodeURIComponent(m[1].replace(/\+/g,' '));
+    document.getElementById('etab').textContent=nom;
+    document.getElementById('f-etab').value=nom; }
+})();
+</script>
+</body>
+</html>
