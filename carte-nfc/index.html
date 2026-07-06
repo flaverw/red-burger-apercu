@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Red Burger — carte NFC / QR (85,6 × 54 mm)</title>
+<!--
+  Carte NFC / QR recto-verso — format carte bancaire 85,6 × 54 mm, prête à imprimer (Ctrl+P, taille réelle / échelle 100 %).
+  Adaptée du kit carte-nfc/carte.html. QR = ../assets/qr.png (à régénérer vers le domaine propre après signature).
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--red:#E11D2E;--ink:#161314;--gold:#F2A93B}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#3a3536;font-family:'Manrope',sans-serif;display:flex;flex-wrap:wrap;gap:30px;justify-content:center;align-items:center;min-height:100vh;padding:40px 20px 70px}
+
+/* Carte au format réel : 85,6 × 54 mm (agrandie ×2 à l'écran via zoom) */
+.card{width:85.6mm;height:54mm;border-radius:2.9mm;overflow:hidden;position:relative;color:#fff;
+  box-shadow:0 12px 30px rgba(0,0,0,.5);zoom:2}
+
+.recto{background:var(--ink)}
+.recto .inner{height:100%;padding:5.3mm 6.1mm;display:flex;flex-direction:column;justify-content:space-between}
+.recto .top{display:flex;align-items:center;gap:2.1mm}
+.recto .mk{width:9.2mm;height:9.2mm;background:var(--red);color:#fff;display:grid;place-items:center;
+  font-family:'Anton';font-size:3.7mm;border-radius:1.9mm;transform:rotate(-4deg)}
+.recto h1{font-family:'Anton';font-size:5.8mm;line-height:.92;text-transform:uppercase;font-weight:400}
+.recto h1 span{display:block;font-size:2.4mm;letter-spacing:.4mm;color:var(--gold)}
+.recto .slo{font-family:'Anton';font-size:3.2mm;color:var(--red);text-transform:uppercase;font-weight:400}
+.recto .foot{display:flex;justify-content:space-between;align-items:flex-end;font-size:2mm}
+.recto .foot b{color:var(--gold)}
+.recto .tap{border:.2mm solid var(--gold);color:var(--gold);padding:1.1mm 2mm;font-size:1.6mm;letter-spacing:.15mm;text-transform:uppercase}
+
+.verso{background:var(--red)}
+.verso .inner{height:100%;padding:4.5mm 5.3mm;display:flex;align-items:center;gap:4.5mm}
+.verso .qr{width:26.4mm;height:26.4mm;background:#fff;border-radius:2.1mm;padding:1.6mm;flex:none}
+.verso .qr img{width:100%;height:100%;display:block}
+.verso .rt h2{font-family:'Anton';font-size:4.2mm;line-height:.95;text-transform:uppercase;font-weight:400}
+.verso .rt p{font-size:1.85mm;color:#ffd6d6;margin:1.1mm 0 1.9mm}
+.verso .rt .row{font-size:2.1mm;margin:.5mm 0;display:flex;gap:1.2mm;align-items:center;font-weight:600}
+
+.tagp{position:fixed;bottom:12px;left:0;right:0;text-align:center;color:#ccc;font-size:12px;padding:0 20px}
+
+@media print{
+  @page{margin:12mm}
+  body{background:#fff;display:flex;flex-direction:column;align-items:center;gap:10mm;padding:0;min-height:auto}
+  .card{zoom:1;box-shadow:none;page-break-inside:avoid;outline:.25mm dashed #aaa;outline-offset:1mm}
+  .tagp{display:none}
+}
+</style>
+</head>
+<body>
+
+  <!-- RECTO -->
+  <div class="card recto">
+    <div class="inner">
+      <div class="top"><div class="mk">RB</div><h1>Red<br>Burger<span>MAUBEUGE</span></h1></div>
+      <div class="slo">5,0/5 · fait maison</div>
+      <div class="foot"><div>129B route de Feignies<br><b>Maubeuge</b></div><div class="tap">◗ Approchez</div></div>
+    </div>
+  </div>
+
+  <!-- VERSO -->
+  <div class="card verso">
+    <div class="inner">
+      <div class="qr"><img src="../assets/qr.png" alt="QR code vers le site Red Burger"></div>
+      <div class="rt"><h2>Un tap.<br>Votre carte.</h2><p>Scannez pour voir le menu et commander.</p>
+        <div class="row">🍔 Nos burgers signature</div><div class="row">⭐ 60+ avis 5,0/5</div></div>
+    </div>
+  </div>
+
+  <div class="tagp">Carte NFC / QR — recto-verso · 85,6 × 54 mm (format réel à l'impression, échelle 100 %) · QR à régénérer vers le domaine propre après signature.</div>
+
+</body>
+</html>
